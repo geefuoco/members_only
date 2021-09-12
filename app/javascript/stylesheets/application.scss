@@ -1,0 +1,15 @@
+
+$body-bg: #373d41;
+
+@import "bootstrap";
+
+$backdrop: #373d41;
+
+.container-bg {
+    background-color: $backdrop;
+}
+
+html{
+    background-color: $backdrop;
+}
+
