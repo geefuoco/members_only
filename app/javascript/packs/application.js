@@ -10,6 +10,11 @@ import "channels"
 import "bootstrap/dist/css/bootstrap"
 import "bootstrap/dist/js/bootstrap"
 import "../stylesheets/application"
+import "jquery"
+import "jquery-ujs"
+
+
+console.log("Hello from application.js")
 
 Rails.start()
 Turbolinks.start()

@@ -11,6 +11,10 @@ class SecretsController < ApplicationController
 
   def new
     @secret = Secret.new
+    respond_to do |format|
+      format.js
+      format.json
+    end
   end
 
   def create
