@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  resources :secrets
+
   devise_for :users, controllers: { registrations: "registrations"}
 
   authenticated do
-    root "home#visitor", as: "authenticated_root"
+    root "secrets#index", as: "authenticated_root"
   end
 
   unauthenticated do 

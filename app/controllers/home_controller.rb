@@ -4,8 +4,5 @@ class HomeController < ApplicationController
     
   end
 
-  def visitor
-
-  end
   
 end

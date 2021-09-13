@@ -12,8 +12,16 @@ $tertiary: #6699bb;
     background-color: $backdrop;
 }
 
-.btn-two{
+.btn-main{
     background-color: $main;
+}
+
+.btn-sec{
+    background-color: $secondary;
+}
+
+.btn-tert{
+    background-color: $tertiary;
 }
 
 html{
