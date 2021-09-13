@@ -6,9 +6,9 @@
     <div class="col d-flex justify-content-end  align-items-center">
       <div class="container-bg d-flex-inline justify-content-around">
         <%= link_to "Join the Club", new_user_registration_path, 
-          class: "btn btn-secondary d-none d-sm-inline"%>
+          class: "btn btn-secondary d-none d-sm-inline mx-2 hover"%>
         <%= link_to "Login", new_user_session_path,
-          class: "btn btn-two d-none d-sm-inline ml-3 text-light"%>
+          class: "btn btn-sec d-none d-sm-inline mx-2 text-dark hover"%>
       </div>
     </div>
   </div>
@@ -45,12 +45,14 @@
       <p class="text-light lead">
         Browse posts from users, write comments, and like your favourite posts.
       </p>
+      <%= link_to "Browse Secrets Now", secrets_url,
+        class: "btn btn-tert text-light hover"%>
     </div>
   </div>
   <div class="container container-bg text-center my-3 d-sm-none">
     <%= link_to "Join the Club", new_user_registration_path,
       class: "btn btn-lg btn-secondary"%>
     <%= link_to "Login", new_user_session_path, 
-      class: "btn btn-lg btn-two"%>
+      class: "btn btn-lg btn-sec"%>
   </div>
 </div>

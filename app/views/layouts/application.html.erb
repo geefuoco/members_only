@@ -13,12 +13,12 @@
 
   <body>
     <% if flash[:notice]%>
-      <div class="container bg-info fw-bold">
+      <div class="container-fluid bg-info fw-bold mx-0 text-center">
         <%= flash[:notice] %>
       </div>
     <% end %>
     <% if flash[:alert] %>
-      <div class="container bg-warning fw-bold">
+      <div class="container-fluid bg-warning fw-bold mx-0 text-center">
         <%= flash[:alert] %>
       </div>
     <% end %>
