@@ -4,12 +4,24 @@ $body-bg: #373d41;
 @import "bootstrap";
 
 $backdrop: #373d41;
+$main: #5aba7d;
+$secondary: #ccddcc;
+$tertiary: #6699bb;
 
 .container-bg {
     background-color: $backdrop;
+}
+
+.btn-two{
+    background-color: $main;
 }
 
 html{
     background-color: $backdrop;
 }
 
+.field_with_errors{
+    background-color: #c41b4d;
+    border-radius: 0.1rem;
+    display: inline;
+}

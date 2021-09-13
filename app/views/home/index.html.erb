@@ -1,7 +1,17 @@
-<div class="container container-bg my-5">
-  <h1 class="text-start text-light d-inline">Members Only</h1>
-  <%= link_to "Join the Club", "#", 
-    class: "btn btn-secondary float-end d-none d-sm-inline"%>
+<div class="container container-bg my-5 ">
+  <div class="row justify-content-space-between">
+    <div class="col">
+      <h1 class="text-start text-light d-inline">Members Only</h1>
+    </div>
+    <div class="col d-flex justify-content-end  align-items-center">
+      <div class="container-bg d-flex-inline justify-content-around">
+        <%= link_to "Join the Club", new_user_registration_path, 
+          class: "btn btn-secondary d-none d-sm-inline"%>
+        <%= link_to "Login", new_user_session_path,
+          class: "btn btn-two d-none d-sm-inline ml-3 text-light"%>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container container-bg">
@@ -37,8 +47,10 @@
       </p>
     </div>
   </div>
-  <div class="container container-bg text-center my-3">
-    <%= link_to "Join the Club", "#",
-      class: "btn-lg btn-secondary d-sm-none"%>
+  <div class="container container-bg text-center my-3 d-sm-none">
+    <%= link_to "Join the Club", new_user_registration_path,
+      class: "btn btn-lg btn-secondary"%>
+    <%= link_to "Login", new_user_session_path, 
+      class: "btn btn-lg btn-two"%>
   </div>
 </div>
