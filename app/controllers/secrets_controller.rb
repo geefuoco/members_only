@@ -30,16 +30,19 @@ class SecretsController < ApplicationController
       end
     end
 
-
-
   end
 
   def edit
-    @secret = Secret.find(params[:id])
+    @secret = current_user.secrets.find(params[:id])
   end
 
   def update
-    @secret = Secret.find(params[:id])
+    @secret = current_user.secrets.find(params[:id])
+    if @secret.update(secret_params)
+      redirect_to root_path, notice: "Your secret has been updated"
+    else
+      render :edit, alert: "Invalid secret update"
+    end
   end
 
   def destroy

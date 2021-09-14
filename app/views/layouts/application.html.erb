@@ -12,9 +12,30 @@
   </head>
 
   <body>
-    <%= render "shared/flash_messages"%>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+          <%= link_to "Members Only", root_path,
+            class: "fs-4 text-light btn navbar-brand"%>
 
-    
+          <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsable" 
+            aria-controls="collapsable" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsable">
+            <% if current_user%>
+              <%= render "secrets/logged_in"%>
+            <% else %>
+              <%= render "secrets/not_logged_in"%>
+            <% end %>
+
+          </div>
+        </div>
+      </nav>
+    <%= render "shared/flash_messages"%>
     <%= yield %>
   </body>
 </html>
