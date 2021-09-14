@@ -10,21 +10,28 @@ class SecretsController < ApplicationController
   end
 
   def new
-    @secret = Secret.new
+    @secret = current_user.secrets.build
     respond_to do |format|
       format.js
-      format.json
     end
   end
 
   def create
-    @secret = Secret.new(secret_params)
+    @secret = current_user.secrets.build(secret_params)
 
-    if @secret.save
-      redirect_to root_path, notice: "Secret has been posted."
-    else
-      render :new, alert: "Error while creating Secret"
+    respond_to do |format|
+      if @secret.save
+        format.js
+        flash.now[:notice] = "Secret has been created"
+      else
+        format.html
+        flash.now[:alert] = "Error while creating Secret"
+        render :index
+      end
     end
+
+
+
   end
 
   def edit

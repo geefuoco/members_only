@@ -13,7 +13,6 @@ import "../stylesheets/application"
 import "jquery"
 
 
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
