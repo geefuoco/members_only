@@ -1,0 +1,21 @@
+<% if user_signed_in? && current_user == secret.user %>
+  <div class="container d-flex justify-content-end position-relative end-0 p-0">
+    <%= link_to edit_secret_url(secret.id),
+      class: "btn btn-link pe-0" do %>
+      <span class="icon"><i class="bi bi-pencil" aria-hidden="true"></i></span>
+    <% end %>
+    <button class="btn btn-link "
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#modal-delete<%= secret.id%>">
+      <span class="icon"><i class="bi bi-trash" aria-hidden="true"></i></span>
+    </button>
+
+
+    <div class="modal fade" id="modal-delete<%= secret.id%>" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content"> <%= render "confirmation", secret: secret%> </div>
+    </div>
+  </div>
+  </div>
+<% end %>
