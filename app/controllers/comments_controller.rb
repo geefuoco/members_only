@@ -8,12 +8,13 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.build(comment_params)
-    if @comment.save
-      flash.now[:notice] = "Successfully posted comment"
-    else
-      flash.now[:alert] = "Error while posting comment"
+    respond_to do |format|
+      if @comment.save
+        format.js { render js: "location.reload();", notice: "Successfully posted comment" }
+      else
+        format.js { render js: "location.reload();", alert: "Error while posting comment"}
+      end
     end
-    redirect_to @commentable
   end
 
   def edit
@@ -25,7 +26,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-
+    @comment = @commentable.comments.find_by_id(params[:id])
+    @comment.destroy
+    respond_to do |format|
+      format.html { render js: "location.reload();", notice: "Sucessfully removed post"}
+    end
   end
 
 

@@ -1,12 +1,33 @@
 <% commentable.comments.each do |comment|%>
 
-  <div class="container-fluid bg-dark text-wrap text-light rounded my-1"id="comment<%comment.id%>">
+  <div class="container-fluid bg-dark text-wrap text-light rounded my-1 pe-0"id="comment<%comment.id%>">
+    
     <p class="lead text-wrap text-break pt-2">
-      <%= comment.body%>
+      <% if comment.body.nil? || comment.body == ""%>
+        <p>Sorry ! this comment is missing or deleted.</p>
+      <% else %>
+        <%= comment.body%>
+      <% end %>
     </p>
-    <div class="container-fluid bg-dark text-main rounded my-1">
-      <%= render "comments/comments", commentable: comment %>
+    <div class="container d-flex justify-content-end">
+      <% if user_signed_in? %>
+        <% 
+        linked_path = new_comment_comment_url(comment_id: comment.id, format: :js)
+        bool = true %>
+      <% else %>
+         <% 
+          linked_path = new_user_session_path
+          bool = false
+         %>
+      <% end %>
+
+      <%= link_to "Reply", linked_path,
+        remote: bool,
+        class: "btn btn-primary btn-sm mb-3"%>
     </div>
+  </div>
+  <div class="container-fluid text-light rounded my-2 d-flex flex-column justify-content-end pe-0">
+    <%= render "comments/comments", commentable: comment %>
   </div>
 
 <% end %>
