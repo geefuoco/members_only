@@ -1,0 +1,12 @@
+<% commentable.comments.each do |comment|%>
+
+  <div class="container-fluid bg-dark text-wrap text-light rounded my-1"id="comment<%comment.id%>">
+    <p class="lead text-wrap text-break pt-2">
+      <%= comment.body%>
+    </p>
+    <div class="container-fluid bg-dark text-main rounded my-1">
+      <%= render "comments/comments", commentable: comment %>
+    </div>
+  </div>
+
+<% end %>
