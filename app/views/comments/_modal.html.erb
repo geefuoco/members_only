@@ -1,0 +1,15 @@
+<%= form_with(model: [@commentable, @comment], remote: true, local: false) do |f|%>
+  <div class="modal-header">
+    <h2 class="modal-title fw-bold">
+      Comment
+    </h2>
+  </div>
+  <div class="modal-body">
+    <%= f.text_area :body, required: true,
+      class: "container-fluid"%>
+  </div>
+  <div class="modal-footer d-flex">
+    <%= f.submit "Reply",
+      class: "btn btn-primary align-self-end m-1"%>
+  </div>
+<% end %>

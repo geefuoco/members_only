@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :secrets
+  resources :secrets do
+    resources :comments
+  end
 
   devise_for :users, controllers: { registrations: "registrations"}
 
