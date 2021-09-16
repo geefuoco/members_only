@@ -1,28 +1,26 @@
 <% if user_signed_in? %>
 
     <div class="container-fluid my-auto px-0">
-      <p class="m-0">From: <%= secret.user.username %></p>
+      <p class="m-0">From: <%= comment.user.username %></p>
     </div>
 
-    <% if current_user == secret.user %>
-
-      <%= link_to edit_secret_url(secret.id),
+    <% if current_user == comment.user %>
+      <%= link_to edit_comment_url(comment.id),
         class: "btn btn-link pe-0" do %>
         <span class="icon"><i class="bi bi-pencil" aria-hidden="true"></i></span>
       <% end %>
       <button class="btn btn-link "
         type="button"
         data-bs-toggle="modal"
-        data-bs-target="#modal-delete<%= secret.id%>">
+        data-bs-target="#modal-delete<%= comment.id%>">
         <span class="icon"><i class="bi bi-trash" aria-hidden="true"></i></span>
       </button>
     
 
-      <div class="modal fade" id="modal-delete<%= secret.id%>" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content"> <%= render "confirmation", secret: secret%> 
-          </div>
-        </div>
+    <div class="modal fade" id="modal-delete<%= comment.id%>" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content"> <%= render "comment_confirmation", comment: comment%> </div>
       </div>
+    </div>
   <% end %>
 <% end %>

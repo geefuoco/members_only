@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.build(comment_params)
+    @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
         format.js { render js: "location.reload();", notice: "Successfully posted comment" }
@@ -26,10 +27,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = @commentable.comments.find_by_id(params[:id])
+    @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { render js: "location.reload();", notice: "Sucessfully removed post"}
+      format.js { render js: "location.reload();", notice: "Sucessfully removed post"}
     end
   end
 
