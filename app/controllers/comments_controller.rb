@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.js { render js: "location.reload();", notice: "Successfully posted comment" }
       else
-        format.js { render js: "location.reload();", alert: "Error while posting comment"}
+        format.js { render js: "location.reload();", notice: "Error while posting comment"}
       end
     end
   end
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to session.delete(:return)
     else
-      render :edit, alert: "An error occured while editting your comment."
+      render :edit, notice: "An error occured while editting your comment."
     end
   end
 

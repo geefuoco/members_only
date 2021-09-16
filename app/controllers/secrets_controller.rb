@@ -22,12 +22,10 @@ class SecretsController < ApplicationController
 
     respond_to do |format|
       if @secret.save
-        format.js
-        flash.now[:notice] = "Secret has been created"
+        format.js { @secret = Secret.all }
       else
-        format.html
-        flash.now[:alert] = "Error while creating Secret"
-        render :index
+        format.json { render json: @secret.errors.full_messages, status: :unprocessable_entity}
+        format.js { render js: "location.reload();", notice: "Error while creating post. Please make sure title is 5 characters minimum."} 
       end
     end
 
@@ -42,7 +40,7 @@ class SecretsController < ApplicationController
     if @secret.update(secret_params)
       redirect_to root_path, notice: "Your secret has been updated"
     else
-      render :edit, alert: "Invalid secret update"
+      render :edit, notice: "Invalid secret update"
     end
   end
 

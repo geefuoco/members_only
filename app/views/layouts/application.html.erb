@@ -35,7 +35,9 @@
           </div>
         </div>
       </nav>
-    <%= render "shared/flash_messages"%>
+
+      <%= render "shared/flash_messages" if flash[:notice] %>
+
     <%= yield %>
   </body>
 </html>

@@ -1,14 +1,7 @@
-<% if flash[:notice]%>
-  <div class="container-fluid alert alert-primary fw-bold mx-0 text-center position-absolute top-10">
+<div class="container-fluid fw-bold mx-0 text-center position-absolute top-10 alert alert-primary" id="flash">
     <%= flash[:notice] %>
-  </div>
-<% end %>
-<% if flash[:alert] %>
-  <div class="container-fluid alert alert-danger fw-bold mx-0 text-center position-absolute top-10 ">
-    <%= flash[:alert] %>
-  </div>
-<% end %>
+</div>
 
 <script>
-  $(".alert").fadeOut(4000)
+  $(".alert").fadeOut(4500)
 </script>
