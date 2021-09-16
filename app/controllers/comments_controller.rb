@@ -19,11 +19,17 @@ class CommentsController < ApplicationController
   end
 
   def edit
-
+    @comment = Comment.find(params[:id])
   end
 
   def update
+    @comment = Comment.find(params[:id])
 
+    if @comment.update(comment_params)
+      redirect_to session.delete(:return)
+    else
+      render :edit, alert: "An error occured while editting your comment."
+    end
   end
 
   def destroy

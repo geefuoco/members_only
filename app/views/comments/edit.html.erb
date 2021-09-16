@@ -1,0 +1,12 @@
+<div class="container d-flex flex-column justify-content-center align-items-center text-light mt-3">
+  <%= form_with model: @comment do |f|%>
+    <div class="container d-flex flex-column">
+     <%= f.label :body,
+       class: "fs-4 fw-bold m-2"%>
+     <%= f.text_area :body, required: true%>
+    </div>
+    <div class="container ">
+      <%= f.submit class: "btn btn-sm btn-primary mt-3"%>
+    </div>
+  <% end %>
+</div>

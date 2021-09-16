@@ -3,6 +3,7 @@ class SecretsController < ApplicationController
 
   def show
     @secret = Secret.find(params[:id])
+    session[:return] = request.referer
   end
 
   def index
