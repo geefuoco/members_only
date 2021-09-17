@@ -1,6 +1,6 @@
 class SecretsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-
+  # after_action :remove, only: [:create]
   def show
     @secret = Secret.find(params[:id])
     session[:return] = request.referer
@@ -56,5 +56,9 @@ class SecretsController < ApplicationController
 
   def secret_params
     params.require(:secret).permit(:title, :body)
+  end
+
+  def remove
+    Secret.delay(queue: "removable", priority: 0, run_at: 10.seconds.from_now).remove(Secret.find(params[:id]))
   end
 end
