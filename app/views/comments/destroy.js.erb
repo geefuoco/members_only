@@ -1,0 +1,6 @@
+
+$("#flash").html("<%= j (render "shared/flash_messages")%>")
+<% if !flash.now[:alert]%>
+  $("#comment-stream").html("<%= j (render "comments", commentable: @secret)%>")
+<% end %>
+$("#modal-delete").modal("hide")

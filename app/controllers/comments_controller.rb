@@ -14,8 +14,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
-        @secret = Secret.find_by_id(params[:secret_id]) ||
-          find_top_post(Comment.find(params[:comment_id])) 
+        @secret = get_secret() 
         flash.now[:notice] = "Comment posted"
         format.js { @secret } 
       else
@@ -33,19 +32,19 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 
     if @comment.update(comment_params)
-      # redirect_to session.delete(:return)
-      redirect_to @comment
+      redirect_to find_top_post(@comment), notice: "Comment has been updated"
     else
-      render :edit, notice: "An error occured while editting your comment."
+      redirect_to find_top_post(@comment), notice: "An error occured while editting your comment."
     end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
+    @secret = get_secret()
     @comment.destroy
     respond_to do |format|
-      flash[:notice] = "Sucessfully removed post"
-      format.js { render js: "location.reload();"}
+      flash.now[:notice] = "Sucessfully removed post"
+      format.js { @secret }
     end
   end
 
@@ -62,6 +61,11 @@ class CommentsController < ApplicationController
       elsif params[:comment_id]
         @commentable = Comment.find_by_id(params[:comment_id])
       end
+    end
+
+    def get_secret
+      Secret.find_by_id(params[:secret_id]) ||
+          find_top_post(Comment.find(params[:comment_id]))
     end
 
     def find_top_post(comment)
