@@ -14,10 +14,4 @@ I also went ahead and styled the site entirely with bootstrap. This was my first
 
 As the project progressed, I kept thinking of better ways to improve user experience, such as having a modal window pop up for creating a post as opposed to a separate page. This introduced me to jQuery and Ajax which I picked up very easily.
 
-TODO: 
-
-Fix the display of error messages on screen. Errors through HTTP request arent loaded on the screen leaving a bad User experience. 
-
-Add the Like model, which will allow posts to be liked.
-
-Add a dislay to show the amount of comments on a post.
+Possible features I am looking to implement in the future are likes, and removing a post after 24 hours.
