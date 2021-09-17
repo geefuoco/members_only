@@ -22,10 +22,12 @@ class SecretsController < ApplicationController
 
     respond_to do |format|
       if @secret.save
+        flash.now[:notice] = "Secret has been posted"
         format.js { @secret = Secret.all }
       else
+        flash.now[:alert] = "Please ensure title and body length is 5 characters minimum"
         format.json { render json: @secret.errors.full_messages, status: :unprocessable_entity}
-        format.js { render js: "location.reload();", notice: "Error while creating post. Please make sure title is 5 characters minimum."} 
+        format.js
       end
     end
 
